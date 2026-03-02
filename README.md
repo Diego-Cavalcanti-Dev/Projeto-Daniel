@@ -1,7 +1,6 @@
 
   # projeto escritorio
 
-  This is a code bundle for projeto escritorio. The original project is available at https://www.figma.com/design/z8HiqCrwuV5GoKrkdIbdpM/projeto-escritorio.
 
   ## Running the code
 
