@@ -1,25 +1,37 @@
-import React from 'react';
-import { BookOpen, ArrowRight } from 'lucide-react';
+import React from "react";
+import { BookOpen, ArrowRight } from "lucide-react";
 
 export function Blog() {
   const posts = [
     {
-      title: 'Como cobrar inadimplência sem gerar conflito',
-      summary: 'Estratégias eficazes para recuperar valores em atraso mantendo o bom relacionamento com os condôminos.',
-      image: 'https://images.unsplash.com/photo-1758518731462-d091b0b4ed0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMG1lZXRpbmclMjBsYXd5ZXJ8ZW58MXx8fHwxNzcwODE4MzczfDA&ixlib=rb-4.1.0&q=80&w=1080',
-      category: 'Direito Condominial',
+      title:
+        "Quando a briga no condomínio passa do limite? 5 sinais para acender alerta",
+      summary:
+        "Após caso trágico em Caldas Novas, especialista explica limites do síndico, direitos dos moradores e 5 sinais graves que exigem ação imediata",
+      image:
+        "https://images.unsplash.com/photo-1758518731462-d091b0b4ed0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMG1lZXRpbmclMjBsYXd5ZXJ8ZW58MXx8fHwxNzcwODE4MzczfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      category: "Direito Condominial",
+      link: "https://vivaocondominio.com.br/noticias/dia-a-dia/conflitos-condominio-limites-legais-quando-acionar-justica/",
     },
     {
-      title: 'Regimento interno: o que costuma dar problema',
-      summary: 'Pontos críticos que geram disputas e como prevenir conflitos através de um regimento bem estruturado.',
-      image: 'https://images.unsplash.com/photo-1657727534676-cac1bb160d64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsZWdhbCUyMGRvY3VtZW50cyUyMGRlc2slMjBwcm9mZXNzaW9uYWx8ZW58MXx8fHwxNzcwODE4Mzc0fDA&ixlib=rb-4.1.0&q=80&w=1080',
-      category: 'Documentos',
+      title:
+        "Início das assembleias acende alerta para riscos de falhas internas e desvios em condomínios",
+      summary:
+        "Prestação de contas, troca de síndicos e circulação de documentos tornam o primeiro trimestre um período crítico para a saúde financeira dos condomínios, alerta especialista.",
+      image:
+        "https://images.unsplash.com/photo-1657727534676-cac1bb160d64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsZWdhbCUyMGRvY3VtZW50cyUyMGRlc2slMjBwcm9mZXNzaW9uYWx8ZW58MXx8fHwxNzcwODE4Mzc0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      category: "Documentos",
+      link: "https://vivaocondominio.com.br/noticias/dia-a-dia/prestacao-contas-condominio-riscos-assembleia/",
     },
     {
-      title: 'Matrícula do imóvel: sinais de irregularidade',
-      summary: 'Aprenda a identificar problemas documentais antes de comprar um imóvel e evite surpresas desagradáveis.',
-      image: 'https://images.unsplash.com/photo-1747555094127-9a922d56a64c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXNpZGVudGlhbCUyMGJ1aWxkaW5nJTIwZmFjYWRlJTIwdXJiYW58ZW58MXx8fHwxNzcwODE4MzczfDA&ixlib=rb-4.1.0&q=80&w=1080',
-      category: 'Regularização',
+      title:
+        "Fique atento: atraso de IPTU e condomínio pode levar à perda de imóvel; entenda",
+      summary:
+        "Entenda os riscos que o não pagamento dessas duas taxas implicam e negocie antes de perder o bem.",
+      image:
+        "https://images.unsplash.com/photo-1747555094127-9a922d56a64c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXNpZGVudGlhbCUyMGJ1aWxkaW5nJTIwZmFjYWRlJTIwdXJiYW58ZW58MXx8fHwxNzcwODE4MzczfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      category: "Regularização",
+      link: "https://vivaocondominio.com.br/noticias/inadimplencia/iptu-condominio-risco-perda-imovel-dividas/",
     },
   ];
 
@@ -27,9 +39,9 @@ export function Blog() {
     <section id="conteudos" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 
+          <h2
             className="text-3xl md:text-4xl lg:text-5xl text-primary mb-4"
-            style={{ fontFamily: 'var(--font-heading)' }}
+            style={{ fontFamily: "var(--font-heading)" }}
           >
             Conteúdos úteis
           </h2>
@@ -40,8 +52,10 @@ export function Blog() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {posts.map((post, index) => (
-            <article
+            <a
               key={index}
+              href={post.link}
+              target="_blank"
               className="bg-background rounded-xl overflow-hidden border border-border hover:shadow-lg transition-all group cursor-pointer"
             >
               <div className="relative h-48 overflow-hidden">
@@ -66,10 +80,13 @@ export function Blog() {
                 <div className="flex items-center text-accent font-medium text-sm">
                   <BookOpen size={16} className="mr-2" />
                   Ler artigo
-                  <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight
+                    size={16}
+                    className="ml-2 group-hover:translate-x-1 transition-transform"
+                  />
                 </div>
               </div>
-            </article>
+            </a>
           ))}
         </div>
 

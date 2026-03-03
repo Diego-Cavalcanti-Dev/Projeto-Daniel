@@ -37,7 +37,7 @@ export function Header() {
           <div className="flex-shrink-0">
             <h1
               className="text-xl md:text-2xl"
-              style={{ fontFamily: "'Bookman Old Style', serif" }}
+              style={{ fontFamily: "var(--font-heading)" }}
             >
               <span className="text-white">Daniel Cavalcanti</span>
               <span className="text-white/70 text-sm md:text-base block">

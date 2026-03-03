@@ -13,7 +13,7 @@ export function Personas() {
         "Evitar passivo jurídico para o condomínio",
         "Ter segurança nas decisões de assembleia",
         "Cobrança eficiente de inadimplência",
-        "Prestação de conts SEM CUSTO AO CONDOMÍNIO",
+        "Prestação de contas SEM CUSTO AO CONDOMÍNIO",
       ],
       cta: "Quero orientação para síndico",
     },

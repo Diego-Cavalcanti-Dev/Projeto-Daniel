@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { Phone, Mail, Clock, MapPin, Send } from 'lucide-react';
-import { Button } from './button';
+import React, { useState } from "react";
+import { Phone, Mail, Clock, MapPin, Send } from "lucide-react";
+import { Button } from "./button";
 
 export function Contact() {
   const [formData, setFormData] = useState({
-    nome: '',
-    whatsapp: '',
-    email: '',
-    perfil: '',
-    assunto: '',
-    mensagem: '',
+    nome: "",
+    whatsapp: "",
+    email: "",
+    perfil: "",
+    assunto: "",
+    mensagem: "",
     aceitaPrivacidade: false,
   });
 
@@ -18,27 +18,32 @@ export function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Aqui seria a integração com backend
-    console.log('Formulário enviado:', formData);
+    console.log("Formulário enviado:", formData);
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
       setFormData({
-        nome: '',
-        whatsapp: '',
-        email: '',
-        perfil: '',
-        assunto: '',
-        mensagem: '',
+        nome: "",
+        whatsapp: "",
+        email: "",
+        perfil: "",
+        assunto: "",
+        mensagem: "",
         aceitaPrivacidade: false,
       });
     }, 3000);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
     const { name, value, type } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
+      [name]:
+        type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
     }));
   };
 
@@ -46,14 +51,15 @@ export function Contact() {
     <section id="contato" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 
+          <h2
             className="text-3xl md:text-4xl lg:text-5xl text-primary mb-4"
-            style={{ fontFamily: 'var(--font-heading)' }}
+            style={{ fontFamily: "var(--font-heading)" }}
           >
             Fale com um advogado
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Envie seu caso e receba um direcionamento inicial. Retornamos em até 1 dia útil.
+            Envie seu caso e receba um direcionamento inicial. Retornamos em até
+            1 dia útil.
           </p>
         </div>
 
@@ -61,9 +67,9 @@ export function Contact() {
           {/* Left - Contact Info + WhatsApp */}
           <div className="space-y-8">
             <div>
-              <h3 
+              <h3
                 className="text-2xl text-primary mb-6"
-                style={{ fontFamily: 'var(--font-heading)' }}
+                style={{ fontFamily: "var(--font-heading)" }}
               >
                 Entre em contato
               </h3>
@@ -83,7 +89,9 @@ export function Contact() {
                   </div>
                   <div>
                     <p className="font-medium text-primary">E-mail</p>
-                    <p className="text-muted-foreground">daniel@cavalcantiadvocacia.adv.br</p>
+                    <p className="text-muted-foreground">
+                      daniel@cavalcantiadvocacia.adv.br
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -91,8 +99,12 @@ export function Contact() {
                     <Clock size={20} className="text-accent" />
                   </div>
                   <div>
-                    <p className="font-medium text-primary">Horário de atendimento</p>
-                    <p className="text-muted-foreground">Segunda a sexta, 8h às 18h</p>
+                    <p className="font-medium text-primary">
+                      Horário de atendimento
+                    </p>
+                    <p className="text-muted-foreground">
+                      Segunda a sexta, 8h às 18h
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -101,24 +113,32 @@ export function Contact() {
                   </div>
                   <div>
                     <p className="font-medium text-primary">Localização</p>
-                    <p className="text-muted-foreground">Atendimento em todo Brasil</p>
+                    <p className="text-muted-foreground">
+                      Atendimento em todo Brasil
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="p-8 bg-gradient-to-br from-accent to-accent/80 rounded-2xl text-white">
-              <h4 className="text-2xl mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
+              <h4
+                className="text-2xl mb-4"
+                style={{ fontFamily: "var(--font-heading)" }}
+              >
                 Precisa de atendimento imediato?
               </h4>
               <p className="mb-6 text-white/90">
-                Clique no botão abaixo e fale diretamente com nossa equipe pelo WhatsApp
+                Clique no botão abaixo e fale diretamente com nossa equipe pelo
+                WhatsApp
               </p>
               <Button
-                variant="primary"
+                variant="white"
                 size="lg"
-                className="w-full bg-white text-accent hover:bg-white/90"
-                onClick={() => window.open('https://wa.me/5541920043413', '_blank')}
+                className="w-full bg-white text-black hover:bg-white/90"
+                onClick={() =>
+                  window.open("https://wa.me/5541920043413", "_blank")
+                }
               >
                 <Phone size={20} />
                 WhatsApp agora
@@ -133,7 +153,10 @@ export function Contact() {
                 <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mb-4">
                   <Send size={32} className="text-accent" />
                 </div>
-                <h3 className="text-2xl text-primary mb-2" style={{ fontFamily: 'var(--font-heading)' }}>
+                <h3
+                  className="text-2xl text-primary mb-2"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                >
                   Mensagem enviada!
                 </h3>
                 <p className="text-muted-foreground">
@@ -143,7 +166,10 @@ export function Contact() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="nome" className="block text-sm font-medium text-primary mb-2">
+                  <label
+                    htmlFor="nome"
+                    className="block text-sm font-medium text-primary mb-2"
+                  >
                     Nome completo *
                   </label>
                   <input
@@ -159,7 +185,10 @@ export function Contact() {
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="whatsapp" className="block text-sm font-medium text-primary mb-2">
+                    <label
+                      htmlFor="whatsapp"
+                      className="block text-sm font-medium text-primary mb-2"
+                    >
                       WhatsApp *
                     </label>
                     <input
@@ -174,7 +203,10 @@ export function Contact() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-primary mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-primary mb-2"
+                    >
                       E-mail *
                     </label>
                     <input
@@ -191,7 +223,10 @@ export function Contact() {
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="perfil" className="block text-sm font-medium text-primary mb-2">
+                    <label
+                      htmlFor="perfil"
+                      className="block text-sm font-medium text-primary mb-2"
+                    >
                       Seu perfil *
                     </label>
                     <select
@@ -210,7 +245,10 @@ export function Contact() {
                     </select>
                   </div>
                   <div>
-                    <label htmlFor="assunto" className="block text-sm font-medium text-primary mb-2">
+                    <label
+                      htmlFor="assunto"
+                      className="block text-sm font-medium text-primary mb-2"
+                    >
                       Assunto *
                     </label>
                     <select
@@ -230,7 +268,10 @@ export function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="mensagem" className="block text-sm font-medium text-primary mb-2">
+                  <label
+                    htmlFor="mensagem"
+                    className="block text-sm font-medium text-primary mb-2"
+                  >
                     Descreva seu caso *
                   </label>
                   <textarea
@@ -254,11 +295,14 @@ export function Contact() {
                     onChange={handleChange}
                     className="mt-1 w-4 h-4 text-accent border-border rounded focus:ring-accent"
                   />
-                  <label htmlFor="aceitaPrivacidade" className="text-sm text-muted-foreground">
-                    Concordo com a{' '}
+                  <label
+                    htmlFor="aceitaPrivacidade"
+                    className="text-sm text-muted-foreground"
+                  >
+                    Concordo com a{" "}
                     <a href="#" className="text-accent hover:underline">
                       Política de Privacidade
-                    </a>{' '}
+                    </a>{" "}
                     e autorizo o uso dos meus dados para contato.
                   </label>
                 </div>

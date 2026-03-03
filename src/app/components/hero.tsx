@@ -92,7 +92,7 @@ export function Hero() {
               <img
                 src="https://images.unsplash.com/photo-1760246964044-1384f71665b9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjBidWlsZGluZyUyMGNvcnBvcmF0ZXxlbnwxfHx8fDE3NzA4MTMzMDJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
                 alt="Escritório de advocacia profissional"
-                className="w-full h-[700px] object-cover object-top"
+                className="w-full h-[600px] object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent"></div>
             </div>
