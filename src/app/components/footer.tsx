@@ -40,10 +40,9 @@ export function Footer() {
               Daniel Cavalcanti
             </h3>
             <p className="text-primary-foreground/80 mb-4 max-w-md">
-              Escritório de advocacia especializado em Direito
-              Condominial e Regularização de Imóveis, atuando
-              com foco em soluções práticas e segurança
-              jurídica.
+              Escritório de advocacia especializado em Direito Condominial e
+              Regularização de Imóveis, atuando com foco em soluções práticas e
+              segurança jurídica.
             </p>
             <div className="flex gap-4">
               <a
@@ -69,17 +68,13 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4">
-              Links rápidos
-            </h4>
+            <h4 className="font-semibold mb-4">Links rápidos</h4>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    onClick={(e) =>
-                      scrollToSection(e, link.href)
-                    }
+                    onClick={(e) => scrollToSection(e, link.href)}
                     className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
                   >
                     {link.label}
@@ -109,8 +104,7 @@ export function Footer() {
         <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-primary-foreground/60">
-              © {currentYear} Daniel cavalcanti advocacia
-              imobiliaria.
+              © {currentYear} Daniel Cavalcanti Advocacia imobiliária.
             </p>
             <div className="flex gap-6">
               <a
@@ -128,9 +122,8 @@ export function Footer() {
             </div>
           </div>
           <p className="text-xs text-primary-foreground/50 mt-6 text-center md:text-left">
-            Este site tem caráter informativo e não substitui
-            consulta jurídica. Os resultados dependem das
-            particularidades de cada caso.
+            Este site tem caráter informativo e não substitui consulta jurídica.
+            Os resultados dependem das particularidades de cada caso.
           </p>
         </div>
       </div>

@@ -1,17 +1,14 @@
-import React from "react";
 import { Phone, FileText, Shield, MapPin, Target } from "lucide-react";
 import { Button } from "./button";
-
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center pt-0 bg-gradient-to-br from-background via-secondary to-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
           <div className="space-y-8">
             <div className="space-y-4">
               <h1
-                className="text-4xl md:text-5xl lg:text-5xl leading-tight text-primary"
+                className="text-4xl md:text-5xl lg:text-5xl leading-tight text-primary p-5"
                 style={{ fontFamily: "var(--font-heading)" }}
               >
                 Soluções jurídicas para condomínios e regularização de imóveis
@@ -29,7 +26,7 @@ export function Hero() {
               <Button
                 variant="outline"
                 size="lg"
-                className="bg-[#0eb54c] hover:bg-[#20bd5a] text-white border-2 border-black"
+                className="bg-[#68cf67] hover:bg-[#20bd5a] text-white border-2 border-black"
                 onClick={() =>
                   window.open("https://wa.me/5541920043413", "_blank")
                 }

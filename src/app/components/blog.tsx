@@ -93,9 +93,7 @@ export function Blog() {
         <div className="text-center mt-12">
           <button
             className="inline-flex items-center gap-2 px-6 py-3 border-2 border-primary text-primary rounded-lg hover:bg-primary hover:text-white transition-all"
-            onClick={() => {
-              // Navegação para blog
-            }}
+            onClick={() => {}}
           >
             Ver mais artigos
             <ArrowRight size={18} />

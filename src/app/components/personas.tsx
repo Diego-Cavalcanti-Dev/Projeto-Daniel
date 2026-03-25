@@ -64,7 +64,7 @@ export function Personas() {
           {personas.map((persona, index) => (
             <div
               key={index}
-              className="bg-background p-8 rounded-xl border border-border hover:shadow-lg transition-all"
+              className="bg-background p-8 rounded-xl border border-border hover:shadow-lg transition-all flex flex-col h-full"
             >
               <div className="flex flex-col items-center text-center mb-6">
                 <div className="p-4 bg-accent/10 rounded-full mb-4">
@@ -81,7 +81,7 @@ export function Personas() {
                 </p>
               </div>
 
-              <div className="space-y-3 mb-8">
+              <div className="space-y-3 mb-8 flex-1">
                 {persona.pains.map((pain, idx) => (
                   <div key={idx} className="flex items-start gap-2">
                     <span className="text-accent mt-1 flex-shrink-0">✓</span>
@@ -93,7 +93,7 @@ export function Personas() {
               <Button
                 variant="outline"
                 size="md"
-                className="w-full"
+                className="w-full mt-auto"
                 onClick={() => {
                   const element = document.querySelector("#contato");
                   if (element) element.scrollIntoView({ behavior: "smooth" });

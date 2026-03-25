@@ -1,37 +1,50 @@
-import React from 'react';
-import { MessageCircle, Eye, Target, FolderCheck, Heart, CalendarCheck } from 'lucide-react';
+import React from "react";
+import {
+  MessageCircle,
+  Eye,
+  Target,
+  FolderCheck,
+  Heart,
+  CalendarCheck,
+} from "lucide-react";
 
 export function Differentials() {
   const differentials = [
     {
       icon: MessageCircle,
-      title: 'Linguagem simples (sem juridiquês)',
-      description: 'Comunicação clara e direta para que você entenda cada etapa sem complicação.',
+      title: "Linguagem simples (sem juridiquês)",
+      description:
+        "Comunicação clara e direta para que você entenda cada etapa sem complicação.",
     },
     {
       icon: Eye,
-      title: 'Transparência de etapas e prazos',
-      description: 'Você acompanha todo o processo com informações atualizadas constantemente.',
+      title: "Transparência de etapas e prazos",
+      description:
+        "Você acompanha todo o processo com informações atualizadas constantemente.",
     },
     {
       icon: Target,
-      title: 'Atuação estratégica (preventiva + contenciosa)',
-      description: 'Evitamos problemas antes que aconteçam e atuamos com eficiência quando necessário.',
+      title: "Atuação estratégica (preventiva + contenciosa)",
+      description:
+        "Evitamos problemas antes que aconteçam e atuamos com eficiência quando necessário.",
     },
     {
       icon: FolderCheck,
-      title: 'Organização de documentos e evidências',
-      description: 'Mantemos tudo estruturado e acessível para agilizar processos e decisões.',
+      title: "Organização de documentos e evidências",
+      description:
+        "Mantemos tudo estruturado e acessível para agilizar processos e decisões.",
     },
     {
       icon: Heart,
-      title: 'Atendimento humanizado',
-      description: 'Valorizamos cada cliente com escuta ativa e soluções personalizadas.',
+      title: "Atendimento humanizado",
+      description:
+        "Valorizamos cada cliente com escuta ativa e soluções personalizadas.",
     },
     {
       icon: CalendarCheck,
-      title: 'Rotina condominial na prática',
-      description: 'Participamos de assembleias, gerenciamos notificações e apoiamos na gestão de conflitos.',
+      title: "Rotina condominial na prática",
+      description:
+        "Participamos de assembleias, gerenciamos notificações e apoiamos na gestão de conflitos.",
     },
   ];
 
@@ -39,14 +52,14 @@ export function Differentials() {
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 
+          <h2
             className="text-3xl md:text-4xl lg:text-5xl text-primary mb-4"
-            style={{ fontFamily: 'var(--font-heading)' }}
+            style={{ fontFamily: "var(--font-heading)" }}
           >
             Nossos diferenciais
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            O que nos torna referência em Direito Condominial e Imobiliário
+            O que nos torna referência em direito condominial e imobiliário
           </p>
         </div>
 
