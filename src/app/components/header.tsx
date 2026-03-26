@@ -74,7 +74,7 @@ export function Header() {
             </a>
             <Button
               variant="outline"
-              className="bg-[#0eb54c] hover:bg-[#20bd5a] text-white border-2 border-black"
+              className="bg-[#68cf67] hover:bg-[#20bd5a] text-white border-2 border-black"
               size="sm"
               onClick={() =>
                 window.open("https://wa.me/5541920043413", "_blank")
