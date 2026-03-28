@@ -1,5 +1,8 @@
 import React from "react";
 import { BookOpen, ArrowRight } from "lucide-react";
+import Img1 from "../img/reuniao.jpeg"
+import Img2 from "../img/analise_arquivos.jpeg"
+import Img3 from "../img/predio.jpeg"
 
 export function Blog() {
   const posts = [
@@ -8,8 +11,7 @@ export function Blog() {
         "Quando a briga no condomínio passa do limite? 5 sinais para acender alerta",
       summary:
         "Após caso trágico em Caldas Novas, especialista explica limites do síndico, direitos dos moradores e 5 sinais graves que exigem ação imediata",
-      image:
-        "https://images.unsplash.com/photo-1758518731462-d091b0b4ed0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMG1lZXRpbmclMjBsYXd5ZXJ8ZW58MXx8fHwxNzcwODE4MzczfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      image:Img1,
       category: "Direito Condominial",
       link: "https://vivaocondominio.com.br/noticias/dia-a-dia/conflitos-condominio-limites-legais-quando-acionar-justica/",
     },
@@ -18,8 +20,7 @@ export function Blog() {
         "Início das assembleias acende alerta para riscos de falhas internas e desvios em condomínios",
       summary:
         "Prestação de contas, troca de síndicos e circulação de documentos tornam o primeiro trimestre um período crítico para a saúde financeira dos condomínios, alerta especialista.",
-      image:
-        "https://images.unsplash.com/photo-1657727534676-cac1bb160d64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsZWdhbCUyMGRvY3VtZW50cyUyMGRlc2slMjBwcm9mZXNzaW9uYWx8ZW58MXx8fHwxNzcwODE4Mzc0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      image: Img2,
       category: "Documentos",
       link: "https://vivaocondominio.com.br/noticias/dia-a-dia/prestacao-contas-condominio-riscos-assembleia/",
     },
@@ -28,8 +29,7 @@ export function Blog() {
         "Fique atento: atraso de IPTU e condomínio pode levar à perda de imóvel; entenda",
       summary:
         "Entenda os riscos que o não pagamento dessas duas taxas implicam e negocie antes de perder o bem.",
-      image:
-        "https://images.unsplash.com/photo-1747555094127-9a922d56a64c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXNpZGVudGlhbCUyMGJ1aWxkaW5nJTIwZmFjYWRlJTIwdXJiYW58ZW58MXx8fHwxNzcwODE4MzczfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      image: Img3,
       category: "Regularização",
       link: "https://vivaocondominio.com.br/noticias/inadimplencia/iptu-condominio-risco-perda-imovel-dividas/",
     },
