@@ -17,7 +17,6 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Aqui seria a integração com backend
     console.log("Formulário enviado:", formData);
     setSubmitted(true);
     setTimeout(() => {
@@ -135,7 +134,7 @@ export function Contact() {
               <Button
                 variant="white"
                 size="lg"
-                className="w-full bg-white text-black hover:bg-white/90"
+                className="w-full bg-white text-black hover:bg-[#68cf67]"
                 onClick={() =>
                   window.open("https://wa.me/5541920043413", "_blank")
                 }
