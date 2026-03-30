@@ -1,10 +1,2 @@
 
-  # projeto escritorio
-
-
-  ## Running the code
-
-  Run `npm i` to install the dependencies.
-
-  Run `npm run dev` to start the development server.
-  
+  # Esta é uma land page de um escritorio de advocacia utilizando vite e backend com supabase.

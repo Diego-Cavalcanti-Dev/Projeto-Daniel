@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Phone, Mail, Clock, MapPin, Send } from "lucide-react";
 import { Button } from "./button";
 
+const SUPABASE_URL = "https://vxntzbpnqvzcrtlxnkmr.supabase.co/rest/v1/Leads";
+const SUPABASE_KEY = "sb_publishable_wb6vftToGVMSvrh8l_ywrQ_8rBU99Xh";
+
 export function Contact() {
   const [formData, setFormData] = useState({
     nome: "",
@@ -132,7 +135,7 @@ export function Contact() {
                 WhatsApp
               </p>
               <Button
-                variant="white"
+                variant="secondary"
                 size="lg"
                 className="w-full bg-white text-black hover:bg-[#68cf67]"
                 onClick={() =>
