@@ -1,11 +1,6 @@
 import { Phone, FileText, Shield, MapPin, Target } from "lucide-react";
 import { Button } from "./button";
-<<<<<<< HEAD
 import ImgCapa from "@/app/Img/imgCapa.jpeg";
-
-=======
-import ImgCapa from "../img/fotoCapa.jpg";
->>>>>>> teste
 
 export function Hero() {
   return (
