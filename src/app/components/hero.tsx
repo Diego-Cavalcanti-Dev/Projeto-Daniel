@@ -1,7 +1,11 @@
 import { Phone, FileText, Shield, MapPin, Target } from "lucide-react";
 import { Button } from "./button";
+<<<<<<< HEAD
 import ImgCapa from "@/app/Img/imgCapa.jpeg";
 
+=======
+import ImgCapa from "../img/fotoCapa.jpg";
+>>>>>>> teste
 
 export function Hero() {
   return (
@@ -92,7 +96,7 @@ export function Hero() {
               <img
                 src={ImgCapa}
                 alt="Escritório de advocacia profissional"
-                className="w-full h-[600px] object-cover object-top"
+                className="w-full h-[600px] object-cover object-top scale-153"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-transparent"></div>
             </div>

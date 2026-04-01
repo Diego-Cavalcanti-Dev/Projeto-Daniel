@@ -1,7 +1,13 @@
 import { BookOpen, ArrowRight } from "lucide-react";
+<<<<<<< HEAD
 import Img_reuniao from "@/app/Img/reuniao.jpeg";
 import Img_adm from "@/app/Img/administrador.jpeg";
 import Img_predio from "@/app/Img/predio.jpeg";
+=======
+import Img1 from "../img/reuniao.jpeg"
+import Img2 from "../img/analise_arquivos.jpeg"
+import Img3 from "../img/predio.jpeg"
+>>>>>>> teste
 
 export function Blog() {
   const posts = [
@@ -10,7 +16,11 @@ export function Blog() {
         "Quando a briga no condomínio passa do limite? 5 sinais para acender alerta",
       summary:
         "Após caso trágico em Caldas Novas, especialista explica limites do síndico, direitos dos moradores e 5 sinais graves que exigem ação imediata",
+<<<<<<< HEAD
       image: Img_reuniao,
+=======
+      image:Img1,
+>>>>>>> teste
       category: "Direito Condominial",
       link: "https://vivaocondominio.com.br/noticias/dia-a-dia/conflitos-condominio-limites-legais-quando-acionar-justica/",
     },
@@ -19,7 +29,11 @@ export function Blog() {
         "Início das assembleias acende alerta para riscos de falhas internas e desvios em condomínios",
       summary:
         "Prestação de contas, troca de síndicos e circulação de documentos tornam o primeiro trimestre um período crítico para a saúde financeira dos condomínios, alerta especialista.",
+<<<<<<< HEAD
       image: Img_adm,
+=======
+      image: Img2,
+>>>>>>> teste
       category: "Documentos",
       link: "https://vivaocondominio.com.br/noticias/dia-a-dia/prestacao-contas-condominio-riscos-assembleia/",
     },
@@ -28,7 +42,11 @@ export function Blog() {
         "Fique atento: atraso de IPTU e condomínio pode levar à perda de imóvel; entenda",
       summary:
         "Entenda os riscos que o não pagamento dessas duas taxas implicam e negocie antes de perder o bem.",
+<<<<<<< HEAD
       image: Img_predio,
+=======
+      image: Img3,
+>>>>>>> teste
       category: "Regularização",
       link: "https://vivaocondominio.com.br/noticias/inadimplencia/iptu-condominio-risco-perda-imovel-dividas/",
     },
