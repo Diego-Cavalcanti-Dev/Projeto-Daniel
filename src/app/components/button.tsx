@@ -19,7 +19,7 @@ export function Button({
     primary: 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm hover:shadow-md',
     secondary: 'bg-accent text-accent-foreground hover:bg-accent/90 shadow-sm hover:shadow-md',
     outline: 'border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground',
-    whatsapp: 'bg-[#25D366] text-white hover:bg-[#20BA5A] shadow-sm hover:shadow-md',
+    whatsapp: 'bg-[#68cf67] text-black hover:bg-[#20BA5A] shadow-sm hover:shadow-md border border-primary',
   };
   
   const sizes = {

@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Phone, Mail, Clock, MapPin, Send } from "lucide-react";
 import { Button } from "./button";
+import { createClient } from "@supabase/supabase-js";
 
-const SUPABASE_URL = "https://vxntzbpnqvzcrtlxnkmr.supabase.co/rest/v1/Leads";
+const SUPABASE_URL = "https://vxntzbpnqvzcrtlxnkmr.supabase.co";
 const SUPABASE_KEY = "sb_publishable_wb6vftToGVMSvrh8l_ywrQ_8rBU99Xh";
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -18,22 +21,46 @@ export function Contact() {
 
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Formulário enviado:", formData);
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({
-        nome: "",
-        whatsapp: "",
-        email: "",
-        perfil: "",
-        assunto: "",
-        mensagem: "",
-        aceitaPrivacidade: false,
-      });
-    }, 3000);
+    try {
+      const leadData = {
+        nome: formData.nome,
+        telefone: formData.whatsapp,
+        email: formData.email,
+        perfil: formData.perfil,
+        assunto: formData.assunto,
+        descricao: formData.mensagem,
+      };
+
+      const { data, error } = await supabase
+        .from('Leads')
+        .insert([leadData]);
+
+      if (error) {
+        console.error("Erro ao enviar dados:", error);
+        alert("Erro ao enviar mensagem. Tente novamente.");
+        return;
+      }
+
+      console.log("Dados enviados com sucesso:", data);
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({
+          nome: "",
+          whatsapp: "",
+          email: "",
+          perfil: "",
+          assunto: "",
+          mensagem: "",
+          aceitaPrivacidade: false,
+        });
+      }, 3000);
+    } catch (err) {
+      console.error("Erro inesperado:", err);
+      alert("Erro ao enviar mensagem. Tente novamente.");
+    }
   };
 
   const handleChange = (
@@ -66,7 +93,6 @@ export function Contact() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Left - Contact Info + WhatsApp */}
           <div className="space-y-8">
             <div>
               <h3
@@ -78,7 +104,7 @@ export function Contact() {
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-accent/10 rounded-lg">
-                    <Phone size={20} className="text-accent" />
+                    <Phone size={30} className="text-accent" />
                   </div>
                   <div>
                     <p className="font-medium text-primary">WhatsApp</p>
@@ -87,7 +113,7 @@ export function Contact() {
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-accent/10 rounded-lg">
-                    <Mail size={20} className="text-accent" />
+                    <Mail size={30} className="text-accent" />
                   </div>
                   <div>
                     <p className="font-medium text-primary">E-mail</p>
@@ -98,7 +124,7 @@ export function Contact() {
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-accent/10 rounded-lg">
-                    <Clock size={20} className="text-accent" />
+                    <Clock size={30} className="text-accent" />
                   </div>
                   <div>
                     <p className="font-medium text-primary">
@@ -111,7 +137,7 @@ export function Contact() {
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-accent/10 rounded-lg">
-                    <MapPin size={20} className="text-accent" />
+                    <MapPin size={30} className="text-accent" />
                   </div>
                   <div>
                     <p className="font-medium text-primary">Localização</p>
@@ -135,20 +161,19 @@ export function Contact() {
                 WhatsApp
               </p>
               <Button
-                variant="secondary"
+                variant="whatsapp"
                 size="lg"
                 className="w-full bg-white text-black hover:bg-[#68cf67]"
                 onClick={() =>
                   window.open("https://wa.me/5541920043413", "_blank")
                 }
               >
-                <Phone size={20} />
+                <Phone size={30} />
                 WhatsApp agora
               </Button>
             </div>
           </div>
 
-          {/* Right - Form */}
           <div className="bg-background p-8 rounded-2xl border border-border">
             {submitted ? (
               <div className="flex flex-col items-center justify-center py-12 text-center">
