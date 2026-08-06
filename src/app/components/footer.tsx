@@ -1,90 +1,49 @@
 import { Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
-import { type MouseEvent } from "react";
-import { scrollToSection } from "../navigation";
+import { navigationItems } from "../routes";
 import { siteConfig } from "../site";
 
-const quickLinks = [
-  { label: "Serviços", href: "#servicos" },
-  { label: "Para síndicos", href: "#para-sindicos" },
-  { label: "Regularização", href: "#regularizacao" },
-  { label: "Conteúdos", href: "#conteudos" },
-  { label: "Contato", href: "#contato" },
+const socialLinks = [
+  { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" },
+  { href: "https://instagram.com", icon: Instagram, label: "Instagram" },
 ];
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-
-  const handleNavigation = (
-    event: MouseEvent<HTMLAnchorElement>,
-    href: string,
-  ) => {
-    event.preventDefault();
-    scrollToSection(href);
-  };
-
   return (
-    <footer className="bg-[linear-gradient(180deg,#07153f_0%,#061232_100%)] text-primary-foreground">
-      <div className="mx-auto max-w-[1480px] px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16 xl:px-10">
-        <div className="mb-8 rounded-[1.9rem] border border-white/10 bg-white/6 p-5 backdrop-blur-sm sm:mb-10 sm:p-8">
-          <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div>
-              <p className="mb-3 text-sm font-medium uppercase tracking-[0.18em] text-accent">
-                Daniel Cavalcanti
-              </p>
-              <h3
-                className="text-2xl text-white sm:text-4xl"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                Advocacia imobiliária com postura estratégica e comunicação clara
-              </h3>
-            </div>
-
-            <p className="max-w-2xl text-sm leading-relaxed text-white/72 sm:text-base lg:justify-self-end">
-              Atuação orientada por clareza, organização documental e segurança
-              patrimonial em demandas condominiais e imobiliárias.
-            </p>
-          </div>
-        </div>
-
-        <div className="grid gap-8 sm:gap-10 lg:grid-cols-[1.25fr_0.78fr_0.9fr_0.95fr]">
+    <footer className="bg-[#06133c] text-white">
+      <div className="mx-auto max-w-[1280px] px-5 py-12 sm:px-8 sm:py-16 lg:px-10">
+        <div className="grid gap-10 border-b border-white/12 pb-10 lg:grid-cols-[1.2fr_.7fr_1fr]">
           <div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-white/90">
-              Presença digital
+            <p className="text-xs font-semibold uppercase tracking-[.2em] text-[#f1d488]">
+              Daniel Cavalcanti
             </p>
-            <div className="flex gap-3">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/6 text-white transition-all duration-200 hover:-translate-y-0.5 hover:border-[#d7b35a]/45 hover:bg-[#d7b35a]/12 hover:text-[#f1d488]"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={18} />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/6 text-white transition-all duration-200 hover:-translate-y-0.5 hover:border-[#d7b35a]/45 hover:bg-[#d7b35a]/12 hover:text-[#f1d488]"
-                aria-label="Instagram"
-              >
-                <Instagram size={18} />
-              </a>
+            <h2
+              className="mt-3 max-w-md text-3xl leading-tight sm:text-4xl"
+              style={{ fontFamily: "var(--font-heading)" }}
+            >
+              Estratégia jurídica para proteger o seu patrimônio.
+            </h2>
+            <div className="mt-6 flex gap-3">
+              {socialLinks.map(({ href, icon: Icon, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="rounded-full border border-white/15 p-3 text-white/80 transition hover:border-[#f1d488] hover:text-[#f1d488]"
+                >
+                  <Icon size={18} />
+                </a>
+              ))}
             </div>
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-white/90">
+            <h3 className="text-xs font-semibold uppercase tracking-[.18em] text-white/56">
               Navegação
-            </h4>
-            <ul className="space-y-3 text-sm">
-              {quickLinks.map((link) => (
+            </h3>
+            <ul className="mt-5 space-y-3 text-sm text-white/76">
+              {navigationItems.map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
-                  onClick={(event) => handleNavigation(event, link.href)}
-                    className="text-white/70 transition-colors hover:text-[#f1d488]"
-                  >
+                  <a href={link.href} className="transition hover:text-[#f1d488]">
                     {link.label}
                   </a>
                 </li>
@@ -93,65 +52,33 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-white/90">
+            <h3 className="text-xs font-semibold uppercase tracking-[.18em] text-white/56">
               Contato
-            </h4>
-            <ul className="space-y-4 text-sm">
-              <li className="flex items-start gap-3 text-white/72">
-                <MapPin size={16} className="mt-0.5 shrink-0 text-[#f1d488]" />
+            </h3>
+            <ul className="mt-5 space-y-4 text-sm leading-relaxed text-white/76">
+              <li className="flex gap-3">
+                <MapPin size={18} className="shrink-0 text-[#f1d488]" />
                 <span>
                   {siteConfig.contact.address.lines[0]}
                   <br />
                   {siteConfig.contact.address.lines[1]}
                 </span>
               </li>
-              <li className="flex items-start gap-3 text-white/72">
-                <Phone size={16} className="mt-0.5 text-[#f1d488]" />
-                <span>{siteConfig.contact.phone}</span>
+              <li className="flex gap-3">
+                <Phone size={18} className="shrink-0 text-[#f1d488]" />
+                {siteConfig.contact.phone}
               </li>
-              <li className="flex items-start gap-3 text-white/72">
-                <Mail size={16} className="mt-0.5 text-[#f1d488]" />
-                <span>{siteConfig.contact.email}</span>
+              <li className="flex gap-3">
+                <Mail size={18} className="shrink-0 text-[#f1d488]" />
+                {siteConfig.contact.email}
               </li>
             </ul>
           </div>
-
-          <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-white/90">
-              Atendimento
-            </h4>
-            <p className="text-sm leading-relaxed text-white/72">
-              Segunda a sexta, das 8h às 18h, com atendimento online e suporte
-              em demandas imobiliárias e condominiais em todo o Brasil.
-            </p>
-          </div>
         </div>
 
-        <div className="mt-8 border-t border-white/10 pt-5 sm:mt-12 sm:pt-6">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <p className="text-sm text-white/60">
-              © {currentYear} {siteConfig.name}.
-            </p>
-            <div className="flex flex-wrap gap-5">
-              <a
-                href="#"
-                className="text-sm text-white/60 transition-colors hover:text-[#f1d488]"
-              >
-                Política de Privacidade
-              </a>
-              <a
-                href="#"
-                className="text-sm text-white/60 transition-colors hover:text-[#f1d488]"
-              >
-                Termos de Uso
-              </a>
-            </div>
-          </div>
-          <p className="mt-5 max-w-3xl text-xs leading-relaxed text-white/46">
-            Este site possui caráter informativo e não substitui consulta
-            jurídica. A análise adequada depende das circunstâncias e da
-            documentação de cada caso concreto.
-          </p>
+        <div className="flex flex-col gap-3 pt-6 text-xs leading-relaxed text-white/48 sm:flex-row sm:justify-between">
+          <p>© {new Date().getFullYear()} {siteConfig.name}.</p>
+          <p>Este site tem caráter informativo e não substitui consulta jurídica.</p>
         </div>
       </div>
     </footer>

@@ -1,44 +1,28 @@
 # Daniel Cavalcanti Advocacia Imobiliária
 
-Landing page institucional para um escritório de advocacia com foco em direito imobiliário, direito condominial, regularização de imóveis e atendimento consultivo por WhatsApp e formulário.
+Site institucional responsivo para o escritório Daniel Cavalcanti Advocacia Imobiliária, voltado a direito imobiliário, direito condominial, contratos e regularização de imóveis.
 
-O projeto atual tem dois blocos principais:
+O projeto oferece páginas institucionais para apresentação do escritório, áreas de atuação, conteúdos e contato. O canal de conversão usado pela interface é o WhatsApp.
 
-- Frontend em `React` + `Vite`
-- Backend simples em `Node.js` para envio do formulário de contato por e-mail via `nodemailer`
+## Tecnologias
 
-## Visão geral
+- React 18 com TypeScript
+- Vite 6
+- Tailwind CSS 4
+- Lucide React para ícones
+- Node.js nativo para servir a versão compilada em produção
 
-- `React 18`
-- `Vite 6`
-- Estilos globais com arquivos em `src/styles`
-- Ícones com `lucide-react`
-- Servidor HTTP nativo em `server/index.mjs`
+## Páginas
 
-## Estrutura
+| Rota | Conteúdo |
+| --- | --- |
+| `/` | Página inicial, destaques, apresentação e processo de trabalho |
+| `/escritorio` | Posicionamento e diferenciais do escritório |
+| `/areas-de-atuacao` | Serviços e perfis atendidos |
+| `/conteudos` | Artigos e materiais informativos |
+| `/contato` | Dados de contato, FAQ e acesso ao WhatsApp |
 
-- `src/main.tsx` - ponto de entrada da aplicação
-- `src/app/App.tsx` - composição da landing page
-- `src/app/components` - seções da página
-- `src/app/img` - imagens e logos do site
-- `src/app/site.ts` - dados institucionais e contatos
-- `src/app/navigation.ts` - utilitários de navegação e WhatsApp
-- `src/styles` - estilos globais, fontes e tema
-- `server/index.mjs` - servidor HTTP, envio de e-mail e entrega dos arquivos compilados
-
-## Seções da página
-
-- Header
-- Hero
-- Destaques do hero
-- Serviços
-- Perfis atendidos
-- Processo
-- Diferenciais
-- Conteúdos
-- FAQ
-- Contato
-- Footer
+As rotas são resolvidas no cliente em `src/app/App.tsx`, sem uma biblioteca de roteamento externa.
 
 ## Requisitos
 
@@ -59,105 +43,56 @@ Inicie o frontend:
 npm run dev
 ```
 
-Inicie apenas o servidor de API e envio de e-mail:
+O Vite disponibiliza o site, normalmente em `http://localhost:5173`.
 
-```powershell
-npm run dev:api
-```
+## Produção
 
-O Vite encaminha requisições para `/api` para o servidor local.
-
-## Build
+Gere os arquivos estáticos e inicie o servidor Node:
 
 ```powershell
 npm run build
-```
-
-O build gera a pasta `dist/`, que é servida pelo servidor Node em produção.
-
-## Produção local
-
-```powershell
 npm run start
 ```
 
-Esse comando inicia `server/index.mjs`, expõe `POST /api/contact` e serve os arquivos compilados em `dist/`.
+O comando `start` serve o conteúdo de `dist/`. URLs que não correspondem a arquivos estáticos recebem `dist/index.html`, permitindo carregar as rotas do site diretamente.
 
-## Formulário de contato
+## Contato
 
-O formulário envia os dados para `POST /api/contact`.
+O contato da interface é feito pelo WhatsApp. Telefone, e-mail institucional, endereço e URL do WhatsApp ficam centralizados em `src/app/site.ts`.
 
-O servidor:
+## Estrutura do projeto
 
-- valida os campos obrigatórios
-- exige aceite da política de privacidade
-- monta o e-mail em texto e HTML
-- envia a mensagem com `nodemailer`
-
-## Variáveis de ambiente
-
-Crie um arquivo `.env.server` na raiz do projeto com base em `.env.server.example`.
-
-Exemplo:
-
-```env
-PORT=3001
-SMTP_HOST=smtp.seu-provedor.com
-SMTP_PORT=587
-SMTP_SECURE=false
-SMTP_USER=seu-usuario-smtp
-SMTP_PASS=sua-senha-smtp
-CONTACT_TO_EMAIL=daniel@cavalcantiadvocacia.adv.br
-CONTACT_FROM_EMAIL=site@cavalcantiadvocacia.adv.br
-CONTACT_REPLY_TO_EMAIL=daniel@cavalcantiadvocacia.adv.br
-ALLOWED_ORIGIN=http://localhost:5173
+```text
+src/
+├── app/
+│   ├── components/       # Seções e componentes da interface
+│   ├── img/              # Logos e imagens institucionais
+│   ├── App.tsx           # Seleção da página pela rota atual
+│   ├── navigation.ts     # Abertura do WhatsApp e rolagem suave
+│   ├── pages.tsx         # Composição das páginas
+│   └── site.ts           # Dados institucionais e de contato
+├── styles/               # Fontes, tema e estilos globais
+└── main.tsx              # Ponto de entrada do React
+server/
+└── index.mjs             # Servidor estático da versão de produção
 ```
-
-### Significado das variáveis
-
-- `PORT` - porta do servidor Node
-- `SMTP_HOST` - host do provedor de e-mail
-- `SMTP_PORT` - porta SMTP
-- `SMTP_SECURE` - `true` para TLS/SSL, `false` para conexão comum
-- `SMTP_USER` - usuário SMTP
-- `SMTP_PASS` - senha SMTP
-- `CONTACT_TO_EMAIL` - e-mail que recebe os contatos
-- `CONTACT_FROM_EMAIL` - remetente usado no envio
-- `CONTACT_REPLY_TO_EMAIL` - e-mail de resposta
-- `ALLOWED_ORIGIN` - origem permitida para CORS
 
 ## Personalização
 
-Os dados institucionais do site estão concentrados em:
+- Atualize telefone, e-mail, endereço e URL do WhatsApp em `src/app/site.ts`.
+- Substitua logos e imagens em `src/app/img/`.
+- Altere textos e a composição das páginas em `src/app/pages.tsx` e em `src/app/components/`.
+- Configure os links reais de LinkedIn e Instagram em `src/app/components/footer.tsx`; os atuais são genéricos.
 
-- `src/app/site.ts`
+## Scripts disponíveis
 
-As imagens principais ficam em:
+| Comando | Finalidade |
+| --- | --- |
+| `npm run dev` | Inicia o servidor de desenvolvimento do Vite |
+| `npm run build` | Gera a versão de produção em `dist/` |
+| `npm run start` | Serve o build e a API com Node.js |
 
-- `src/app/img`
-
-## Observações
-
-- O projeto foi pensado para funcionar bem em desktop e mobile.
-- O servidor usa `dist/index.html` como fallback para rotas estáticas.
-- `dist/` é uma saída gerada e não deve ser editada manualmente.
-
-## Dependências atuais
-
-O projeto hoje usa apenas:
-
-- `react`
-- `react-dom`
-- `lucide-react`
-- `nodemailer`
-- `tw-animate-css`
-
-No ambiente de desenvolvimento, também usa:
-
-- `vite`
-- `@vitejs/plugin-react`
-- `@tailwindcss/vite`
-- `tailwindcss`
+Não há scripts de testes ou lint configurados atualmente. Para verificar a compilação, execute `npm run build`.
 
 ## Licença
 

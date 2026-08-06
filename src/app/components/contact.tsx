@@ -5,9 +5,7 @@ import {
   Phone,
   ShieldCheck,
 } from "lucide-react";
-import { openWhatsApp } from "../navigation";
 import { siteConfig } from "../site";
-import { Button } from "./button";
 
 const contactItems = [
   {
@@ -84,15 +82,15 @@ export function Contact() {
                   </div>
                 </div>
 
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="mt-5 w-full border-[#55ae68]/40 bg-[#e7f6ea] text-[#1e6c38] hover:bg-[#d1efd8] sm:w-auto"
-                  onClick={() => openWhatsApp(siteConfig.contact.whatsappUrl)}
+                <a
+                  href={siteConfig.contact.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 inline-flex h-12 w-full items-center justify-center gap-2 rounded-[1rem] border border-[#55ae68]/40 bg-[#e7f6ea] px-6 text-sm font-medium tracking-[0.02em] text-[#1e6c38] shadow-[0_10px_24px_rgba(8,26,82,0.06)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#d1efd8] hover:shadow-[0_16px_32px_rgba(199,162,74,0.14)] sm:h-14 sm:w-auto sm:px-8 sm:text-lg"
                 >
                   <Phone size={22} />
                   Falar agora no WhatsApp
-                </Button>
+                </a>
               </div>
             </div>
 

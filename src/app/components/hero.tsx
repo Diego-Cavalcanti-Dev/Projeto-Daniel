@@ -6,7 +6,6 @@ import {
   Users,
 } from "lucide-react";
 import HeroImage from "../img/capa-site.png";
-import { scrollToSection } from "../navigation";
 
 const heroHighlights = [
   {
@@ -78,14 +77,14 @@ export function Hero() {
             </p>
 
             <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:items-center">
-              <button
+              <a
+                href="/contato"
                 className="inline-flex items-center justify-center gap-3 rounded-[1.05rem] border border-[#d7b35a] bg-[#d7b35a] px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-[#07153f] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#f1d488] hover:shadow-[0_14px_32px_rgba(6,17,51,0.22)] sm:gap-4 sm:px-8 sm:py-3.5 sm:text-sm"
-                onClick={() => scrollToSection("#contato")}
               >
                 Saiba mais
                 <ArrowRight size={18} className="sm:hidden" />
                 <ArrowRight size={20} className="hidden sm:block" />
-              </button>
+              </a>
             </div>
 
             <div className="mt-5 flex max-w-[38rem] flex-wrap justify-start gap-2 sm:mt-6 sm:gap-2.5">
