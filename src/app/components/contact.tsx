@@ -1,350 +1,121 @@
-import React, { useState } from "react";
-import { Phone, Mail, Clock, MapPin, Send } from "lucide-react";
-import { Button } from "./button";
-import { createClient } from "@supabase/supabase-js";
+import {
+  Clock,
+  Mail,
+  MapPin,
+  Phone,
+  ShieldCheck,
+} from "lucide-react";
+import { siteConfig } from "../site";
 
-const SUPABASE_URL = "https://vxntzbpnqvzcrtlxnkmr.supabase.co";
-const SUPABASE_KEY = "sb_publishable_wb6vftToGVMSvrh8l_ywrQ_8rBU99Xh";
-
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+const contactItems = [
+  {
+    icon: MapPin,
+    title: "Endereço",
+    value: siteConfig.contact.address.full,
+  },
+  {
+    icon: Phone,
+    title: "WhatsApp",
+    value: siteConfig.contact.phone,
+  },
+  {
+    icon: Mail,
+    title: "E-mail",
+    value: siteConfig.contact.email,
+  },
+  {
+    icon: Clock,
+    title: "Atendimento",
+    value: siteConfig.contact.hours,
+  },
+  {
+    icon: MapPin,
+    title: "Abrangência",
+    value: "Atendimento em todo o Brasil",
+  },
+];
 
 export function Contact() {
-  const [formData, setFormData] = useState({
-    nome: "",
-    whatsapp: "",
-    email: "",
-    perfil: "",
-    assunto: "",
-    mensagem: "",
-    aceitaPrivacidade: false,
-  });
-
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const leadData = {
-        nome: formData.nome,
-        telefone: formData.whatsapp,
-        email: formData.email,
-        perfil: formData.perfil,
-        assunto: formData.assunto,
-        descricao: formData.mensagem,
-      };
-
-      const { data, error } = await supabase
-        .from('Leads')
-        .insert([leadData]);
-
-      if (error) {
-        console.error("Erro ao enviar dados:", error);
-        alert("Erro ao enviar mensagem. Tente novamente.");
-        return;
-      }
-
-      console.log("Dados enviados com sucesso:", data);
-      setSubmitted(true);
-      setTimeout(() => {
-        setSubmitted(false);
-        setFormData({
-          nome: "",
-          whatsapp: "",
-          email: "",
-          perfil: "",
-          assunto: "",
-          mensagem: "",
-          aceitaPrivacidade: false,
-        });
-      }, 3000);
-    } catch (err) {
-      console.error("Erro inesperado:", err);
-      alert("Erro ao enviar mensagem. Tente novamente.");
-    }
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
-  ) => {
-    const { name, value, type } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]:
-        type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
-    }));
-  };
-
   return (
-    <section id="contato" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2
-            className="text-3xl md:text-4xl lg:text-5xl text-primary mb-4"
-            style={{ fontFamily: "var(--font-heading)" }}
-          >
-            Fale com um advogado
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Envie seu caso e receba um direcionamento inicial. Retornamos em até
-            1 dia útil.
-          </p>
-        </div>
+    <section
+      id="contato"
+      className="bg-[linear-gradient(180deg,#f0f3f6_0%,#e8edf4_48%,#f8fafc_100%)] py-10 sm:py-16 lg:py-20"
+    >
+      <div className="mx-auto max-w-[1480px] px-4 sm:px-6 lg:px-8 xl:px-10">
+        <div className="relative overflow-hidden rounded-[2rem] bg-[#081a52] text-white shadow-[0_34px_90px_rgba(8,26,82,0.18)]">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_18%,rgba(255,255,255,0.12),transparent_20%),radial-gradient(circle_at_14%_90%,rgba(215,179,90,0.12),transparent_25%)]" />
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            <div>
-              <h3
-                className="text-2xl text-primary mb-6"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                Entre em contato
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-accent/10 rounded-lg">
-                    <Phone size={30} className="text-accent" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-primary">WhatsApp</p>
-                    <p className="text-muted-foreground">(41) 92004-3413</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-accent/10 rounded-lg">
-                    <Mail size={30} className="text-accent" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-primary">E-mail</p>
-                    <p className="text-muted-foreground">
-                      daniel@cavalcantiadvocacia.adv.br
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-accent/10 rounded-lg">
-                    <Clock size={30} className="text-accent" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-primary">
-                      Horário de atendimento
-                    </p>
-                    <p className="text-muted-foreground">
-                      Segunda a sexta, 8h às 18h
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-accent/10 rounded-lg">
-                    <MapPin size={30} className="text-accent" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-primary">Localização</p>
-                    <p className="text-muted-foreground">
-                      Atendimento em todo Brasil
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="p-8 bg-gradient-to-br from-accent to-accent/80 rounded-2xl text-white">
-              <h4
-                className="text-2xl mb-4"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                Precisa de atendimento imediato?
-              </h4>
-              <p className="mb-6 text-white/90">
-                Clique no botão abaixo e fale diretamente com nossa equipe pelo
-                WhatsApp
-              </p>
-              <Button
-                variant="whatsapp"
-                size="lg"
-                className="w-full bg-white text-black hover:bg-[#68cf67]"
-                onClick={() =>
-                  window.open("https://wa.me/5541920043413", "_blank")
-                }
-              >
-                <Phone size={30} />
-                WhatsApp agora
-              </Button>
-            </div>
-          </div>
-
-          <div className="bg-background p-8 rounded-2xl border border-border">
-            {submitted ? (
-              <div className="flex flex-col items-center justify-center py-12 text-center">
-                <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mb-4">
-                  <Send size={32} className="text-accent" />
-                </div>
-                <h3
-                  className="text-2xl text-primary mb-2"
+          <div className="relative grid gap-6 p-5 sm:gap-8 sm:p-8 lg:grid-cols-[0.82fr_1.18fr] lg:gap-12 lg:p-10 xl:p-12">
+            <div className="flex flex-col justify-between">
+              <div>
+                <p className="mb-3 text-sm font-medium uppercase tracking-[0.18em] text-[#f1d488]">
+                  Contato
+                </p>
+                <h2
+                  className="max-w-xl text-2xl text-white sm:text-4xl lg:text-[3rem]"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
-                  Mensagem enviada!
-                </h3>
-                <p className="text-muted-foreground">
-                  Obrigado pelo contato. Retornaremos em breve.
+                  Fale com um advogado com clareza desde o primeiro contato
+                </h2>
+                <p className="mt-5 max-w-xl text-base leading-relaxed text-white/78 sm:text-lg">
+                  Conte brevemente o que precisa pelo WhatsApp. A primeira
+                  orientação ajuda a definir os próximos passos, documentos e a
+                  melhor estratégia para o seu caso.
                 </p>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label
-                    htmlFor="nome"
-                    className="block text-sm font-medium text-primary mb-2"
-                  >
-                    Nome completo *
-                  </label>
-                  <input
-                    type="text"
-                    id="nome"
-                    name="nome"
-                    required
-                    value={formData.nome}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
-                  />
-                </div>
 
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div>
-                    <label
-                      htmlFor="whatsapp"
-                      className="block text-sm font-medium text-primary mb-2"
-                    >
-                      WhatsApp *
-                    </label>
-                    <input
-                      type="tel"
-                      id="whatsapp"
-                      name="whatsapp"
-                      required
-                      value={formData.whatsapp}
-                      onChange={handleChange}
-                      placeholder="(41) 92004-3413"
-                      className="w-full px-4 py-3 bg-white border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-primary mb-2"
-                    >
-                      E-mail *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
-                    />
+              <div className="mt-6 sm:mt-8">
+                <div className="rounded-[1.5rem] border border-[#d7b35a]/25 bg-[#0d235f] p-5">
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 text-[#f1d488]">
+                      <ShieldCheck size={21} />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#f1d488]">
+                        Retorno inicial
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-white/84">
+                        Em até 1 dia útil, com orientação objetiva sobre próximos
+                        passos, documentos e estratégia possível para o caso.
+                      </p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div>
-                    <label
-                      htmlFor="perfil"
-                      className="block text-sm font-medium text-primary mb-2"
-                    >
-                      Seu perfil *
-                    </label>
-                    <select
-                      id="perfil"
-                      name="perfil"
-                      required
-                      value={formData.perfil}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
-                    >
-                      <option value="">Selecione...</option>
-                      <option value="sindico">Síndico</option>
-                      <option value="administradora">Administradora</option>
-                      <option value="proprietario">Proprietário</option>
-                      <option value="comprador">Comprador</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="assunto"
-                      className="block text-sm font-medium text-primary mb-2"
-                    >
-                      Assunto *
-                    </label>
-                    <select
-                      id="assunto"
-                      name="assunto"
-                      required
-                      value={formData.assunto}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
-                    >
-                      <option value="">Selecione...</option>
-                      <option value="condominial">Condominial</option>
-                      <option value="regularizacao">Regularização</option>
-                      <option value="contratos">Contratos</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="mensagem"
-                    className="block text-sm font-medium text-primary mb-2"
-                  >
-                    Descreva seu caso *
-                  </label>
-                  <textarea
-                    id="mensagem"
-                    name="mensagem"
-                    required
-                    value={formData.mensagem}
-                    onChange={handleChange}
-                    rows={5}
-                    className="w-full px-4 py-3 bg-white border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent resize-none"
-                  />
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <input
-                    type="checkbox"
-                    id="aceitaPrivacidade"
-                    name="aceitaPrivacidade"
-                    required
-                    checked={formData.aceitaPrivacidade}
-                    onChange={handleChange}
-                    className="mt-1 w-4 h-4 text-accent border-border rounded focus:ring-accent"
-                  />
-                  <label
-                    htmlFor="aceitaPrivacidade"
-                    className="text-sm text-muted-foreground"
-                  >
-                    Concordo com a{" "}
-                    <a href="#" className="text-accent hover:underline">
-                      Política de Privacidade
-                    </a>{" "}
-                    e autorizo o uso dos meus dados para contato.
-                  </label>
-                </div>
-
-                <Button
-                  type="submit"
-                  variant="secondary"
-                  size="lg"
-                  className="w-full"
+                <a
+                  href={siteConfig.contact.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 inline-flex h-12 w-full items-center justify-center gap-2 rounded-[1rem] border border-[#55ae68]/40 bg-[#e7f6ea] px-6 text-sm font-medium tracking-[0.02em] text-[#1e6c38] shadow-[0_10px_24px_rgba(8,26,82,0.06)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#d1efd8] hover:shadow-[0_16px_32px_rgba(199,162,74,0.14)] sm:h-14 sm:w-auto sm:px-8 sm:text-lg"
                 >
-                  <Send size={20} />
-                  Enviar mensagem
-                </Button>
-              </form>
-            )}
+                  <Phone size={22} />
+                  Falar agora no WhatsApp
+                </a>
+              </div>
+            </div>
+
+            <div className="grid content-center gap-4 sm:grid-cols-2">
+              {contactItems.map((item) => (
+                <article
+                  key={item.title}
+                  className="rounded-[1.35rem] border border-white/10 bg-white/8 p-4 backdrop-blur-sm transition-colors duration-200 hover:bg-white/12 last:sm:col-span-2 sm:p-5"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[1rem] bg-[#f1d488]/12 text-[#f1d488]">
+                      <item.icon size={22} />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/60">
+                        {item.title}
+                      </p>
+                      <p className="mt-1 text-sm leading-relaxed text-white sm:text-base">
+                        {item.value}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </div>

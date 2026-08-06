@@ -1,82 +1,49 @@
-import React from "react";
-import { Linkedin, Instagram, Mail, Phone } from "lucide-react";
+import { Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { navigationItems } from "../routes";
+import { siteConfig } from "../site";
+
+const socialLinks = [
+  { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" },
+  { href: "https://instagram.com", icon: Instagram, label: "Instagram" },
+];
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-
-  const quickLinks = [
-    { label: "Serviços", href: "#servicos" },
-    { label: "Para Síndicos", href: "#para-sindicos" },
-    { label: "Regularização", href: "#regularizacao" },
-    { label: "Depoimentos", href: "#depoimentos" },
-    { label: "Conteúdos", href: "#conteudos" },
-    { label: "Contato", href: "#contato" },
-  ];
-
-  const scrollToSection = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string,
-  ) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
-
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {/* Logo and Description */}
-          <div className="lg:col-span-2">
-            <h3
-              className="text-2xl mb-4"
+    <footer className="bg-[#06133c] text-white">
+      <div className="mx-auto max-w-[1280px] px-5 py-12 sm:px-8 sm:py-16 lg:px-10">
+        <div className="grid gap-10 border-b border-white/12 pb-10 lg:grid-cols-[1.2fr_.7fr_1fr]">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[.2em] text-[#f1d488]">
+              Daniel Cavalcanti
+            </p>
+            <h2
+              className="mt-3 max-w-md text-3xl leading-tight sm:text-4xl"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              Daniel Cavalcanti
-            </h3>
-            <p className="text-primary-foreground/80 mb-4 max-w-md">
-              Escritório de advocacia especializado em Direito Condominial e
-              Regularização de Imóveis, atuando com foco em soluções práticas e
-              segurança jurídica.
-            </p>
-            <div className="flex gap-4">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram size={20} />
-              </a>
+              Estratégia jurídica para proteger o seu patrimônio.
+            </h2>
+            <div className="mt-6 flex gap-3">
+              {socialLinks.map(({ href, icon: Icon, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="rounded-full border border-white/15 p-3 text-white/80 transition hover:border-[#f1d488] hover:text-[#f1d488]"
+                >
+                  <Icon size={18} />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4">Links rápidos</h4>
-            <ul className="space-y-2">
-              {quickLinks.map((link) => (
+            <h3 className="text-xs font-semibold uppercase tracking-[.18em] text-white/56">
+              Navegação
+            </h3>
+            <ul className="mt-5 space-y-3 text-sm text-white/76">
+              {navigationItems.map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => scrollToSection(e, link.href)}
-                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                  >
+                  <a href={link.href} className="transition hover:text-[#f1d488]">
                     {link.label}
                   </a>
                 </li>
@@ -84,47 +51,34 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h4 className="font-semibold mb-4">Contato</h4>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-2 text-primary-foreground/80">
-                <Phone size={16} />
-                <span>(41) 92004-3413</span>
+            <h3 className="text-xs font-semibold uppercase tracking-[.18em] text-white/56">
+              Contato
+            </h3>
+            <ul className="mt-5 space-y-4 text-sm leading-relaxed text-white/76">
+              <li className="flex gap-3">
+                <MapPin size={18} className="shrink-0 text-[#f1d488]" />
+                <span>
+                  {siteConfig.contact.address.lines[0]}
+                  <br />
+                  {siteConfig.contact.address.lines[1]}
+                </span>
               </li>
-              <li className="flex items-center gap-2 text-primary-foreground/80">
-                <Mail size={16} />
-                <span>advdaniel.cavalcanti@outlook.com</span>
+              <li className="flex gap-3">
+                <Phone size={18} className="shrink-0 text-[#f1d488]" />
+                {siteConfig.contact.phone}
+              </li>
+              <li className="flex gap-3">
+                <Mail size={18} className="shrink-0 text-[#f1d488]" />
+                {siteConfig.contact.email}
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-primary-foreground/60">
-              © {currentYear} Daniel Cavalcanti Advocacia imobiliária.
-            </p>
-            <div className="flex gap-6">
-              <a
-                href="#"
-                className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors"
-              >
-                Política de Privacidade
-              </a>
-              <a
-                href="#"
-                className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors"
-              >
-                Termos de Uso
-              </a>
-            </div>
-          </div>
-          <p className="text-xs text-primary-foreground/50 mt-6 text-center md:text-left">
-            Este site tem caráter informativo e não substitui consulta jurídica.
-            Os resultados dependem das particularidades de cada caso.
-          </p>
+        <div className="flex flex-col gap-3 pt-6 text-xs leading-relaxed text-white/48 sm:flex-row sm:justify-between">
+          <p>© {new Date().getFullYear()} {siteConfig.name}.</p>
+          <p>Este site tem caráter informativo e não substitui consulta jurídica.</p>
         </div>
       </div>
     </footer>

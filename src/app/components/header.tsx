@@ -1,140 +1,109 @@
-import React, { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
-import { Button } from "./button";
+import { Menu, MessageCircle, X } from "lucide-react";
+import { useState } from "react";
+import LogoWordmark from "../img/Logo.png";
+import { normalizePathname, navigationItems } from "../routes";
+import { siteConfig } from "../site";
+
+function getDesktopLinkClass(isActive: boolean) {
+  return `rounded-full px-3.5 py-2 text-xs font-semibold uppercase tracking-[0.1em] transition ${
+    isActive
+      ? "bg-[#081a52] text-white"
+      : "text-[#465570] hover:bg-[#f1f4f8] hover:text-[#081a52]"
+  }`;
+}
+
+function getMobileLinkClass(isActive: boolean) {
+  return `rounded-xl px-4 py-3 text-sm font-semibold ${
+    isActive ? "bg-[#081a52] text-white" : "text-[#273653] hover:bg-[#f4f6fa]"
+  }`;
+}
 
 export function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const menuItems = [
-    { label: "Serviços", href: "#servicos" },
-    { label: "Para Síndicos", href: "#para-sindicos" },
-    { label: "Para Condôminos", href: "#para-condominos" },
-    { label: "Regularização", href: "#regularizacao" },
-    { label: "Conteúdos", href: "#conteudos" },
-    { label: "Contato", href: "#contato" },
-  ];
-
-  const scrollToSection = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string,
-  ) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-      setMobileMenuOpen(false);
-    }
-  };
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const currentPath = normalizePathname(window.location.pathname);
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-primary backdrop-blur-sm shadow-sm z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <h1
-              className="text-xl md:text-2xl"
-              style={{ fontFamily: "var(--font-heading)" }}
-            >
-              <span className="text-white">Daniel Cavalcanti</span>
-              <span className="text-white/70 text-sm md:text-base block">
-                Advocacia Imobiliária
-              </span>
-            </h1>
-          </div>
+    <header className="sticky top-0 z-50 border-b border-[#081a52]/10 bg-white/95 shadow-[0_4px_24px_rgba(8,26,82,.05)] backdrop-blur-xl">
+      <div className="h-[3px] bg-[linear-gradient(90deg,#081a52_0%,#c7a24a_42%,#f1d488_50%,#c7a24a_58%,#081a52_100%)]" />
 
-          {/* Desktop Menu */}
-          <nav className="hidden lg:flex items-center gap-6">
-            {menuItems.map((item) => (
+      <div className="mx-auto max-w-[1320px] px-5 sm:px-8 lg:px-10">
+        <div className="flex h-[76px] items-center justify-between gap-4 sm:h-[84px]">
+          <a href="/" className="flex items-center gap-3" aria-label="Página inicial">
+            <span className="flex size-11 items-center justify-center rounded-xl border border-[#081a52]/8 bg-[#f8fafc]">
+              <img
+                src={LogoWordmark}
+                alt="Daniel Cavalcanti Advocacia Imobiliária"
+                className="h-7 w-auto object-contain"
+              />
+            </span>
+            <span className="hidden leading-tight md:block">
+              <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-[#9a7640]">
+                Advocacia imobiliária
+              </span>
+              <span className="mt-1 block text-sm font-semibold text-[#081a52]">
+                Daniel Cavalcanti
+              </span>
+            </span>
+          </a>
+
+          <nav className="hidden items-center gap-1 xl:flex" aria-label="Navegação principal">
+            {navigationItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                onClick={(e) => scrollToSection(e, item.href)}
-                className="text-sm text-white/90 hover:text-accent transition-colors"
-                style={{ fontFamily: "'Bookman Old Style', serif" }}
+                className={getDesktopLinkClass(currentPath === item.href)}
               >
                 {item.label}
               </a>
             ))}
           </nav>
 
-          {/* Desktop CTAs */}
-          <div className="hidden lg:flex items-center gap-4">
-            <a
-              href="https://wa.me/5541920043413"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-white/90 hover:text-accent transition-colors"
-              style={{ fontFamily: "'Bookman Old Style', serif" }}
-            >
-              Agendar consulta
-            </a>
-            <Button
-              variant="outline"
-              className="bg-[#68cf67] hover:bg-[#20bd5a] text-white border-2 border-black"
-              size="sm"
-              onClick={() =>
-                window.open("https://wa.me/5541920043413", "_blank")
-              }
-            >
-              <Phone size={16} />
-              Falar no WhatsApp
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-2 text-white"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
+          <a
+            href={siteConfig.contact.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden items-center gap-2 rounded-full bg-[#081a52] px-4 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-white transition hover:-translate-y-0.5 hover:bg-[#102b75] xl:inline-flex"
           >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            <MessageCircle size={16} />
+            WhatsApp
+          </a>
+
+          <button
+            type="button"
+            onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
+            className="inline-flex size-11 items-center justify-center rounded-full border border-[#081a52]/12 text-[#081a52] xl:hidden"
+            aria-expanded={isMobileMenuOpen}
+            aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+          >
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={21} />}
           </button>
         </div>
-
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-white/20">
-            <nav className="flex flex-col gap-4">
-              {menuItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={(e) => scrollToSection(e, item.href)}
-                  className="text-white/90 hover:text-accent transition-colors py-2"
-                  style={{ fontFamily: "'Bookman Old Style', serif" }}
-                >
-                  {item.label}
-                </a>
-              ))}
-              <div className="flex flex-col gap-3 pt-4 border-t border-white/20">
-                <a
-                  href="https://wa.me/5541920043413"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/90 hover:text-accent transition-colors"
-                  style={{ fontFamily: "'Bookman Old Style', serif" }}
-                >
-                  Agendar consulta
-                </a>
-                <Button
-                  variant="whatsapp"
-                  size="md"
-                  onClick={() =>
-                    window.open("https://wa.me/5541920043413", "_blank")
-                  }
-                >
-                  <Phone size={18} />
-                  Falar no WhatsApp
-                </Button>
-              </div>
-            </nav>
-          </div>
-        )}
       </div>
+
+      {isMobileMenuOpen && (
+        <div className="border-t border-[#081a52]/8 bg-white px-5 py-4 shadow-xl xl:hidden">
+          <nav className="mx-auto flex max-w-[1320px] flex-col gap-1" aria-label="Navegação mobile">
+            {navigationItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className={getMobileLinkClass(currentPath === item.href)}
+              >
+                {item.label}
+              </a>
+            ))}
+            <a
+              href={siteConfig.contact.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-xl bg-[#e5f5e8] px-4 py-3 text-sm font-semibold text-[#1e6c38]"
+            >
+              <MessageCircle size={18} />
+              Falar pelo WhatsApp
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

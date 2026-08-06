@@ -1,29 +1,25 @@
 import { Header } from "./components/header";
-import { Hero } from "./components/hero";
-import { TrustBar } from "./components/trust-bar";
-import { Services } from "./components/services";
-import { Personas } from "./components/personas";
-import { Process } from "./components/process";
-import { Differentials } from "./components/differentials";
-import { Blog } from "./components/blog";
-import { FAQ } from "./components/faq";
-import { Contact } from "./components/contact";
 import { Footer } from "./components/footer";
+import { AreasPage, ContactPage, ContentPage, HomePage, OfficePage } from "./pages";
+import { normalizePathname } from "./routes";
+
+const routes = {
+  "/": HomePage,
+  "/escritorio": OfficePage,
+  "/areas-de-atuacao": AreasPage,
+  "/conteudos": ContentPage,
+  "/contato": ContactPage,
+} as const;
 
 export default function App() {
+  const pathname = normalizePathname(window.location.pathname);
+  const Page = routes[pathname as keyof typeof routes] ?? HomePage;
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#f4f6fa] text-[#111c36]">
       <Header />
-      <main>
-        <Hero />
-        <TrustBar />
-        <Services />
-        <Personas />
-        <Process />
-        <Differentials />
-        <Blog />
-        <FAQ />
-        <Contact />
+      <main className="overflow-x-hidden">
+        <Page />
       </main>
       <Footer />
     </div>
