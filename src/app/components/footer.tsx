@@ -1,81 +1,89 @@
-import React from "react";
-import { Linkedin, Instagram, Mail, Phone } from "lucide-react";
+import { Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { type MouseEvent } from "react";
+import { scrollToSection } from "../navigation";
+import { siteConfig } from "../site";
+
+const quickLinks = [
+  { label: "Serviços", href: "#servicos" },
+  { label: "Para síndicos", href: "#para-sindicos" },
+  { label: "Regularização", href: "#regularizacao" },
+  { label: "Conteúdos", href: "#conteudos" },
+  { label: "Contato", href: "#contato" },
+];
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const quickLinks = [
-    { label: "Serviços", href: "#servicos" },
-    { label: "Para Síndicos", href: "#para-sindicos" },
-    { label: "Regularização", href: "#regularizacao" },
-    { label: "Depoimentos", href: "#depoimentos" },
-    { label: "Conteúdos", href: "#conteudos" },
-    { label: "Contato", href: "#contato" },
-  ];
-
-  const scrollToSection = (
-    e: React.MouseEvent<HTMLAnchorElement>,
+  const handleNavigation = (
+    event: MouseEvent<HTMLAnchorElement>,
     href: string,
   ) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
+    event.preventDefault();
+    scrollToSection(href);
   };
 
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {/* Logo and Description */}
-          <div className="lg:col-span-2">
-            <h3
-              className="text-2xl mb-4"
-              style={{ fontFamily: "var(--font-heading)" }}
-            >
-              Daniel Cavalcanti
-            </h3>
-            <p className="text-primary-foreground/80 mb-4 max-w-md">
-              Escritório de advocacia especializado em Direito Condominial e
-              Regularização de Imóveis, atuando com foco em soluções práticas e
-              segurança jurídica.
+    <footer className="bg-[linear-gradient(180deg,#07153f_0%,#061232_100%)] text-primary-foreground">
+      <div className="mx-auto max-w-[1480px] px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16 xl:px-10">
+        <div className="mb-8 rounded-[1.9rem] border border-white/10 bg-white/6 p-5 backdrop-blur-sm sm:mb-10 sm:p-8">
+          <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div>
+              <p className="mb-3 text-sm font-medium uppercase tracking-[0.18em] text-accent">
+                Daniel Cavalcanti
+              </p>
+              <h3
+                className="text-2xl text-white sm:text-4xl"
+                style={{ fontFamily: "var(--font-heading)" }}
+              >
+                Advocacia imobiliária com postura estratégica e comunicação clara
+              </h3>
+            </div>
+
+            <p className="max-w-2xl text-sm leading-relaxed text-white/72 sm:text-base lg:justify-self-end">
+              Atuação orientada por clareza, organização documental e segurança
+              patrimonial em demandas condominiais e imobiliárias.
             </p>
-            <div className="flex gap-4">
+          </div>
+        </div>
+
+        <div className="grid gap-8 sm:gap-10 lg:grid-cols-[1.25fr_0.78fr_0.9fr_0.95fr]">
+          <div>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-white/90">
+              Presença digital
+            </p>
+            <div className="flex gap-3">
               <a
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/6 text-white transition-all duration-200 hover:-translate-y-0.5 hover:border-[#d7b35a]/45 hover:bg-[#d7b35a]/12 hover:text-[#f1d488]"
                 aria-label="LinkedIn"
               >
-                <Linkedin size={20} />
+                <Linkedin size={18} />
               </a>
               <a
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/6 text-white transition-all duration-200 hover:-translate-y-0.5 hover:border-[#d7b35a]/45 hover:bg-[#d7b35a]/12 hover:text-[#f1d488]"
                 aria-label="Instagram"
               >
-                <Instagram size={20} />
+                <Instagram size={18} />
               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4">Links rápidos</h4>
-            <ul className="space-y-2">
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-white/90">
+              Navegação
+            </h4>
+            <ul className="space-y-3 text-sm">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    onClick={(e) => scrollToSection(e, link.href)}
-                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  onClick={(event) => handleNavigation(event, link.href)}
+                    className="text-white/70 transition-colors hover:text-[#f1d488]"
                   >
                     {link.label}
                   </a>
@@ -84,46 +92,65 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h4 className="font-semibold mb-4">Contato</h4>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-2 text-primary-foreground/80">
-                <Phone size={16} />
-                <span>(41) 92004-3413</span>
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-white/90">
+              Contato
+            </h4>
+            <ul className="space-y-4 text-sm">
+              <li className="flex items-start gap-3 text-white/72">
+                <MapPin size={16} className="mt-0.5 shrink-0 text-[#f1d488]" />
+                <span>
+                  {siteConfig.contact.address.lines[0]}
+                  <br />
+                  {siteConfig.contact.address.lines[1]}
+                </span>
               </li>
-              <li className="flex items-center gap-2 text-primary-foreground/80">
-                <Mail size={16} />
-                <span>advdaniel.cavalcanti@outlook.com</span>
+              <li className="flex items-start gap-3 text-white/72">
+                <Phone size={16} className="mt-0.5 text-[#f1d488]" />
+                <span>{siteConfig.contact.phone}</span>
+              </li>
+              <li className="flex items-start gap-3 text-white/72">
+                <Mail size={16} className="mt-0.5 text-[#f1d488]" />
+                <span>{siteConfig.contact.email}</span>
               </li>
             </ul>
           </div>
+
+          <div>
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.16em] text-white/90">
+              Atendimento
+            </h4>
+            <p className="text-sm leading-relaxed text-white/72">
+              Segunda a sexta, das 8h às 18h, com atendimento online e suporte
+              em demandas imobiliárias e condominiais em todo o Brasil.
+            </p>
+          </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-primary-foreground/60">
-              © {currentYear} Daniel Cavalcanti Advocacia imobiliária.
+        <div className="mt-8 border-t border-white/10 pt-5 sm:mt-12 sm:pt-6">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <p className="text-sm text-white/60">
+              © {currentYear} {siteConfig.name}.
             </p>
-            <div className="flex gap-6">
+            <div className="flex flex-wrap gap-5">
               <a
                 href="#"
-                className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors"
+                className="text-sm text-white/60 transition-colors hover:text-[#f1d488]"
               >
                 Política de Privacidade
               </a>
               <a
                 href="#"
-                className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors"
+                className="text-sm text-white/60 transition-colors hover:text-[#f1d488]"
               >
                 Termos de Uso
               </a>
             </div>
           </div>
-          <p className="text-xs text-primary-foreground/50 mt-6 text-center md:text-left">
-            Este site tem caráter informativo e não substitui consulta jurídica.
-            Os resultados dependem das particularidades de cada caso.
+          <p className="mt-5 max-w-3xl text-xs leading-relaxed text-white/46">
+            Este site possui caráter informativo e não substitui consulta
+            jurídica. A análise adequada depende das circunstâncias e da
+            documentação de cada caso concreto.
           </p>
         </div>
       </div>
