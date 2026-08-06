@@ -1,5 +1,5 @@
 import { ArrowRight, BookOpen } from "lucide-react";
-import Img2 from "../img/analise_arquivos.jpeg";
+import Img2 from "../img/administrador.jpeg";
 import Img3 from "../img/predio.jpeg";
 import Img1 from "../img/reuniao.jpeg";
 
