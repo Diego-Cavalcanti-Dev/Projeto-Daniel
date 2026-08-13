@@ -6,14 +6,14 @@ import {
   Landmark,
 } from "lucide-react";
 import OfficeImage from "./img/predio.jpeg";
-import { Blog } from "./components/blog";
-import { Contact } from "./components/contact";
-import { Differentials } from "./components/differentials";
-import { FAQ } from "./components/faq";
-import { Hero, HeroHighlights } from "./components/hero";
-import { Personas } from "./components/personas";
-import { Process } from "./components/process";
-import { Services } from "./components/services";
+import { Blog } from "./components/Blog";
+import { Contact } from "./components/Contact";
+import { Differentials } from "./components/Differentials";
+import { FAQ } from "./components/FAQ";
+import { Hero, HeroHighlights } from "./components/Hero";
+import { Personas } from "./components/Personas";
+import { Process } from "./components/Process";
+import { Services } from "./components/Services";
 
 type PageIntroProps = {
   eyebrow: string;
