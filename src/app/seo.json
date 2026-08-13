@@ -1,0 +1,30 @@
+{
+  "siteUrl": "https://www.cavalcantiadvocacia.adv.br",
+  "routes": [
+    {
+      "path": "/",
+      "title": "Cavalcanti Advocacia | Advocacia Imobiliária em Curitiba",
+      "description": "Advocacia imobiliária voltada à regularização de imóveis, direito condominial e proteção patrimonial em Curitiba e em todo o Brasil."
+    },
+    {
+      "path": "/escritorio",
+      "title": "O Escritório | Cavalcanti Advocacia Imobiliária",
+      "description": "Conheça a atuação próxima, técnica e estratégica da Cavalcanti Advocacia Imobiliária para proteger decisões, relações e patrimônio."
+    },
+    {
+      "path": "/areas-de-atuacao",
+      "title": "Áreas de Atuação | Cavalcanti Advocacia Imobiliária",
+      "description": "Soluções em direito imobiliário e condominial para condomínios, administradoras, proprietários e compradores em Curitiba e em todo o Brasil."
+    },
+    {
+      "path": "/conteudos",
+      "title": "Conteúdos Jurídicos Imobiliários | Cavalcanti Advocacia",
+      "description": "Conteúdos sobre direito condominial, documentação imobiliária e proteção patrimonial para apoiar decisões jurídicas mais seguras."
+    },
+    {
+      "path": "/contato",
+      "title": "Contato | Cavalcanti Advocacia Imobiliária",
+      "description": "Entre em contato com a Cavalcanti Advocacia Imobiliária para organizar documentos, prazos e os próximos passos do seu caso."
+    }
+  ]
+}

@@ -76,7 +76,14 @@ async function resolveStaticPath(candidatePath) {
   try {
     if ((await fs.stat(candidatePath)).isFile()) return candidatePath;
   } catch {
-    // Routes are handled by the client application.
+    // Fall through to a route-specific page or the client application fallback.
+  }
+
+  const routeIndexPath = path.join(candidatePath, "index.html");
+  try {
+    if ((await fs.stat(routeIndexPath)).isFile()) return routeIndexPath;
+  } catch {
+    // Routes without a generated page are handled by the client application.
   }
 
   const fallbackPath = path.join(distDir, "index.html");
