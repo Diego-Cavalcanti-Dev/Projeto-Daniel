@@ -65,13 +65,6 @@ server/
 └── index.mjs             # Servidor estático da versão de produção
 ```
 
-## Personalização
-
-- Atualize telefone, e-mail, endereço e URL do WhatsApp em `src/app/site.ts`.
-- Substitua logos e imagens em `src/app/img/`.
-- Altere textos e a composição das páginas em `src/app/pages.tsx` e `src/app/components/`.
-- Configure os links reais de LinkedIn e Instagram em `src/app/components/Footer.tsx`; os atuais são genéricos.
-
 ## Scripts disponíveis
 
 | Comando | Finalidade |
@@ -83,6 +76,4 @@ server/
 
 Não há scripts de testes ou lint configurados atualmente. Para verificar a compilação, execute `npm run build`.
 
-## Licença
 
-Uso interno ou institucional, conforme a necessidade do projeto.
